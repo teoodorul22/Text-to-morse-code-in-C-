@@ -1,0 +1,48 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+// Create a map to store the Morse code for each character
+const std::map<char, std::string> morseCode {
+    {'A', ".-"}, {'B', "-..."}, {'C', "-.-."}, {'D', "-.."}, {'E', "."}, {'F', "..-."}, {'G', "--."}, {'H', "...."},
+    {'I', ".."}, {'J', ".---"}, {'K', "-.-"}, {'L', ".-.."}, {'M', "--"}, {'N', "-."}, {'O', "---"}, {'P', ".--."},
+    {'Q', "--.-"}, {'R', ".-."}, {'S', "..."}, {'T', "-"}, {'U', "..-"}, {'V', "...-"}, {'W', ".--"}, {'X', "-..-"},
+    {'Y', "-.--"}, {'Z', "--.."}, {'0', "-----"}, {'1', ".----"}, {'2', "..---"}, {'3', "...--"}, {'4', "....-"},
+    {'5', "....."}, {'6', "-...."}, {'7', "--..."}, {'8', "---.."}, {'9', "----."}, {'.', ".-.-.-"}, {',', "--..--"},
+    {'?', "..--.."}, {'!', "-.-.--"}, {'/', "-..-."}, {'(', "-.--."}, {')', "-.--.-"}, {'&', ".-..."}, {':', "---..."},
+    {';', "-.-.-."}, {'=', "-...-"}, {'+', ".-.-."}, {'-', "-....-"}, {'_', "..--.-"}, {'"', ".-..-."},
+    {'$', "...-..-"}, {'@', ".--.-."}
+};
+
+int main() {
+    // Continue looping as long as the user wants to translate more strings
+    bool continueTranslating = true;
+    while (continueTranslating) {
+        // Prompt the user to enter a string
+        std::cout << "Enter a string to translate: ";
+        std::string inputString;
+        std::getline(std::cin, inputString);
+
+        // Loop through each character of the string and convert it to Morse code
+        std::string outputString;
+        for (char c : inputString) {
+            if (c == ' ') {
+                outputString += " ";
+            } else {
+                outputString += morseCode.at(toupper(c)) + " ";
+            }
+        }
+
+        // Print the resulting Morse code
+        std::cout << "Morse code: " << outputString << std::endl;
+
+        // Ask the user if they want to translate another string
+        std:: cout << "Do you want to translate another string (y/n)? ";
+std::string answer;
+std::getline(std::cin, answer);
+if (answer != "y") {
+continueTranslating = false;
+}
+}
+return 0;
+}
